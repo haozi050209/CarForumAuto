@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_activity" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/color_gray2" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/color_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="手机号"
+            android:textColor="@color/color_title_main"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:id="@+id/yanzhen_phone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="14.0sp" />
+
+        <Button
+            android:id="@+id/yanzhen_obtain_code"
+            android:layout_width="70dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_follow_red"
+            android:text="获取验证码"
+            android:textColor="@color/color_white"
+            android:textSize="12.0sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_gray1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/color_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:paddingLeft="10dp"
+            android:text="验证码"
+            android:textColor="@color/color_title_main"
+            android:textSize="16.0sp" />
+
+        <EditText
+            android:id="@+id/yanzhen_code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="请输入验证码"
+            android:inputType="textPassword"
+            android:maxLength="6"
+            android:singleLine="true"
+            android:textSize="14.0sp" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_gray2" />
+
+    <Button
+        android:id="@+id/button_yanzhen"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/shape_phone_garly"
+        android:text="验证后绑定新手机"
+        android:textColor="@color/color_white"
+        android:textSize="18.0sp" />
+
+
+</LinearLayout>

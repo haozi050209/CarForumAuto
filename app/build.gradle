@@ -1,0 +1,147 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'CarForum'
+            keyPassword 'carforum123'
+            storeFile file('CarForum.jks')
+            storePassword 'carforum123'
+        }
+    }
+
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.yonyou.friendsandaargang"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 2
+        versionName "1.0.0"
+        flavorDimensions "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true //突破应用方法数65535的限制
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"] //设置默认的渠道名
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "ba156d77f19035e6db441fb5", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                qqappid      : "1106865544",
+        ]
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false  //不启用Proguard
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled false //是否启用zipAlign压缩
+            signingConfig signingConfigs.config
+        }
+        release {
+            debuggable true
+            minifyEnabled false //启用Proguard
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled false //是否启用zipAlign压缩
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //多渠道的支持
+    productFlavors {
+        qq {}
+        tb {}
+        _360 {}
+        baidu {}
+        sogou {}
+        xiaomi {}
+        huawei {}
+        oppo {}
+        vivo {}
+        kuan {}
+    }
+
+    //遍历渠道，将每个渠道的name替换到UMENG_CHANNEL_VALUE中
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    //给apk添加对应的版本号
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->  //each 改为 all
+            //输出apk名称为apkname-{productFlavorName}-{version}.apk
+            def fileName = "友车帮-${variant.productFlavors[0].name}-${getVersionName()}.apk"
+            def outFile = output.outputFile
+            if (outFile != null && outFile.name.endsWith('.apk')) {
+                outputFileName = fileName  //output.outputFile 改为 outputFileName
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    compile 'com.android.support:cardview-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //状态栏
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
+    /*banner图*/
+    compile 'com.youth.banner:banner:1.4.10'
+    /*图片加载*/
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    /*选择器*/
+    compile 'com.contrarywind:Android-PickerView:3.2.7'
+    /*网络请求*/
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    // Retrofit库
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.3.0'
+    /*圆形头像图片*/
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+    //照片选择
+    compile 'com.yanzhenjie:album:2.0.2'
+    compile 'com.yanzhenjie:recyclerview-swipe:1.1.4'
+    compile 'com.lzy.widget:imagepicker:0.6.1'
+    compile 'com.github.zcweng:switch-button:0.0.3@aar'
+    /*啊里云上传图片*/
+    compile 'com.aliyun.dpa:oss-android-sdk:2.4.5'
+    compile 'com.squareup.okio:okio:1.9.0'
+    //极光推送
+    compile 'cn.jiguang.sdk:jpush:3.1.3'
+    // 此处以JPush 3.1.1 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.9'
+    //友盟统计
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    //微信分享 支付 登录
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //上啦加载下啦刷新
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-11'
+    //二维码 身份证扫描
+    compile 'com.google.zxing:core:3.3.0'
+    compile 'org.jsoup:jsoup:1.8.3'
+    compile 'io.github.lizhangqu:coreprogress:1.0.2'
+    //流列表
+    compile 'com.hyman:flowlayout-lib:1.1.2'
+    //分割Dex
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.androidkun:XTabLayout:1.1.3'
+    //图片放大缩小
+    compile 'com.github.chrisbanes.photoview:library:+'
+    //图文编辑
+    compile 'jp.wasabeef:richeditor-android:1.2.2'
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="460dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@drawable/shape_interestfield">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="16.0sp"
+            android:textColor="@color/color_transparent"
+            android:text="选择我感兴趣的领域"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.yonyou.friendsandaargang.view.pageview.PageRecyclerView
+                android:id="@+id/pageview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"/>
+
+            <com.yonyou.friendsandaargang.view.pageview.PageIndicatorView
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_sure"
+            android:layout_width="260dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape_follow_red"
+            android:text="确定"
+            android:textColor="@color/color_white"
+            android:textSize="18.0sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_exit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/group"/>
+    
+</LinearLayout>

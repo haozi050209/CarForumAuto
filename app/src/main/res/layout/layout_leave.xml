@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:id="@+id/tv0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="V0"
+            android:textColor="@color/color_balank"
+            android:textSize="12.0sp" />
+
+
+        <TextView
+            android:id="@+id/tv_v1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:padding="3dp"
+            android:text="V1"
+            android:textColor="@color/color_balank"
+            android:textSize="12.0sp" />
+
+
+        <TextView
+            android:id="@+id/tv_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:padding="3dp"
+            android:text="V2"
+            android:textColor="@color/color_balank"
+            android:textSize="12.0sp" />
+
+
+        <TextView
+            android:id="@+id/tv_v3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:padding="3dp"
+            android:text="V3"
+            android:textColor="@color/color_balank"
+            android:textSize="13.0sp" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:gravity="right">
+
+            <TextView
+                android:id="@+id/tv_v4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="V4"
+                android:textColor="@color/color_balank"
+                android:textSize="12.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_pb"
+        android:max="5000"
+        android:progressDrawable="@drawable/shape_pbar"
+        android:visibility="visible" />
+
+
+    <com.yonyou.friendsandaargang.view.GrowthValueProgress
+
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:textSize="16.0sp" />
+
+</LinearLayout>

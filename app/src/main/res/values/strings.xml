@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">友车帮</string>
+
+    <string name="authentication_txet_one">个人身份认证——可参加悬赏问答，福利多多！</string>
+
+    <string name="authentication_txet_two">企业身份认证——企业服务安全使用</string>
+
+    <string name="user_data">上传职业证明（名片/工牌/学生证）</string>
+
+    <string name="v1">V1经验值：100-1074</string>
+    <string name="v2">V2经验值：1075-15559</string>
+    <string name="v3">V3经验值：15560-25559</string>
+    <string name="v4">V4经验值：25560及以上</string>
+
+    <string name="dh1">财富值兑换\nv1可享</string>
+    <string name="dh2">专属活动\nv2可享</string>
+    <string name="dh3">生日特权\nv2可享</string>
+
+
+    <string name="tx">如发现恶意灌水，恶意刷帖等情况必将处理</string>
+
+
+    <string name="gktw">可以详细描述你的问题哦，更容易获得解答呢</string>
+
+    <string name="smzx">可以详细描述你的问题哦，更容易获得解答呢</string>
+</resources>

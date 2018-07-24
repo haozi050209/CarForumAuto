@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/hg"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:textColor="@color/color_balank"
+            android:textSize="16.0sp"
+            android:text="小白一号"/>
+
+        <TextView
+            android:id="@+id/tv_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/color_gray3"
+            android:text="客户订车之后需要退款，还需要全部退回订金，要去法院诉讼4S汽车店，这个一般怎么处理？"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:layout_below="@+id/tv_question"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_area"
+                android:layout_width="50dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_follow_garly"
+                android:gravity="center"
+                android:textColor="@color/color_gray3"
+                android:textSize="10.0sp"
+                android:text="法律专区"/>
+
+            <ImageView
+                android:id="@+id/iv_view"
+                android:layout_width="20dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_area"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/kj" />
+
+            <TextView
+                android:id="@+id/tv_views"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_view"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/color_gray3"
+                android:textSize="13.0sp"
+                android:text="1242"/>
+
+            <TextView
+                android:id="@+id/tv_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_arrow"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/color_gray3"
+                android:textSize="13.0sp"
+                android:text="已解答3个答案免费看"/>
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                android:layout_width="6dp"
+                android:layout_height="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_hotqa"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_gray2" />
+    </RelativeLayout>
+</LinearLayout>

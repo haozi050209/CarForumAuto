@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_white">
+
+    <include layout="@layout/layout_title_activity"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:text="诚邀您对此次运维服务评价，感谢您对用友汽车的支持"
+                android:textColor="#FF343434"
+                android:textSize="13dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="#E2E2E3"/>
+
+            <TextView
+                android:id="@+id/tv_infoccRdid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#343434"
+                android:textSize="14dp"/>
+
+            <TextView
+                android:id="@+id/tv_recordContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#343434"
+                android:textSize="14dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="12dp"
+                android:background="#F2F2F2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:text="总体评价"
+                android:textColor="#3A3A3A"
+                android:textSize="16dp"/>
+
+            <RatingBar
+                style="?android:attr/ratingBarStyleIndicator"
+                android:id="@+id/rb_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:progressTint="#FAB119"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:stepSize="1"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="#E2E2E3"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="处理速度"
+                    android:textColor="#3A3A3A"
+                    android:textSize="16dp"/>
+
+                <RatingBar
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:id="@+id/rb_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:progressTint="#FAB119"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:stepSize="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="处理质量"
+                    android:textColor="#3A3A3A"
+                    android:textSize="16dp"/>
+
+                <RatingBar
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:id="@+id/rb_quality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:progressTint="#FAB119"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:stepSize="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="客服服务"
+                    android:textColor="#3A3A3A"
+                    android:textSize="16dp"/>
+
+                <RatingBar
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:id="@+id/rb_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:progressTint="#FAB119"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:stepSize="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:background="#F7F7F8">
+
+                <EditText
+                    android:id="@+id/et_opinion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@null"
+                    android:maxLength="300"
+                    android:textColor="#8C8C8C"
+                    android:textSize="14sp"
+                    android:hint="可以留下更多建议哦..."/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/shape_follow_red"
+                android:textColor="@color/color_white"
+                android:textSize="18.0sp"
+                android:text="提交评论"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

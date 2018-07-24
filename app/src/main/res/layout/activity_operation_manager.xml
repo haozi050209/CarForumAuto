@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F3F3F3">
+
+    <include layout="@layout/layout_title_activity" />
+    
+    <RelativeLayout
+        android:id="@+id/rl_newproblem"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_white">
+        
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/dk"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv"
+            android:layout_marginLeft="10dp"
+            android:textColor="#3A3A3A"
+            android:textSize="16sp"
+            android:text="新建问题"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/btn_jt3x"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_queryquestion"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/color_white">
+
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/queryquestion"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv2"
+            android:layout_marginLeft="10dp"
+            android:textColor="#3A3A3A"
+            android:textSize="16sp"
+            android:text="查询问题"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/btn_jt3x"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_smsrecharge"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_white">
+
+        <ImageView
+            android:id="@+id/iv3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/smsrecharge"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv3"
+            android:layout_marginLeft="10dp"
+            android:textColor="#3A3A3A"
+            android:textSize="16sp"
+            android:text="短信充值"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/btn_jt3x"/>
+    </RelativeLayout>
+</LinearLayout>

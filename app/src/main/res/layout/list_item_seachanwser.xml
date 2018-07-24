@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/bigserch_anwers_img_item"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/bigserch_anwers_name_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/bigserch_anwers_img_item"
+            android:textSize="16.0sp" />
+
+
+        <TextView
+            android:id="@+id/bigserch_anwers_desc_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bigserch_anwers_name_item"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/bigserch_anwers_img_item"
+            android:textColor="@color/brown1"
+            android:textSize="14.0sp" />
+
+        <TextView
+            android:id="@+id/bigserch_anwers_title_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bigserch_anwers_desc_item"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/bigserch_anwers_img_item"
+            android:textSize="16.0sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bigserch_anwers_title_item"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/bigserch_anwers_img_item">
+
+            <TextView
+                android:id="@+id/bigserch_anwers_zhifu_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/qabj"
+                android:drawableLeft="@drawable/qa"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="立即查看"
+                android:textColor="@color/color_white"
+                android:textSize="14.0sp" />
+
+            <TextView
+                android:id="@+id/bigserch_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="5dp"
+                android:textSize="14.0sp" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

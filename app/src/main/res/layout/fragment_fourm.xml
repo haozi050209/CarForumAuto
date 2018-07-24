@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/color_red"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/fourm_search_lay"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/fourm_search"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/search3x" />
+        </LinearLayout>
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/fourm_tablayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="3dp"
+            android:visibility="visible"
+            app:tabIndicatorColor="@color/color_white"
+            app:tabMaxWidth="80dp"
+            app:tabMinWidth="60dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/color_white"
+            app:tabTextAppearance="@style/TablayoutForumStyle"
+            app:tabTextColor="@color/color_gray_divider_out">
+
+        </android.support.design.widget.TabLayout>
+
+        <LinearLayout
+            android:id="@+id/fourm_add_lay"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/fourm_add"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/add3x" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <com.yonyou.friendsandaargang.view.MyViewPager
+        android:id="@+id/fourm_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+</LinearLayout>

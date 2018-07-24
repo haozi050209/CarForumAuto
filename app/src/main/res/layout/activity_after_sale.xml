@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_activity" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/putto_title"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:ellipsize="end"
+            android:hint="请写下您的问题(最多30个字)"
+            android:lines="1"
+            android:maxEms="30"
+            android:paddingLeft="10dp"
+            android:textSize="16.0sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_gray1" />
+
+        <RelativeLayout
+            android:id="@+id/putto_zq_ray"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:text="专区"
+                android:textColor="@color/color_balank"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/putto_zhuanqu_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/btn_jt3x"
+                android:paddingRight="10dp"
+                android:textColor="@color/color_balank"
+                android:textSize="14.0sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_gray1" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:text="赏金"
+                android:textColor="@color/color_title_main"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/putto_sj_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:hint="请输入赏金金额"
+                android:paddingRight="10dp"
+                android:textSize="14.0sp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_gray1"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+    <com.yonyou.friendsandaargang.view.CustomRichEditor
+        android:id="@+id/putto_richtexteditor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/putto_commit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/shape_follow_red"
+            android:gravity="center"
+            android:text="提问"
+            android:textColor="@color/color_white"
+            android:textSize="18.0sp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_ts" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:lineSpacingExtra="3dp"
+                android:text="如果在72小时内无人答复／无合适答案赏金将自动退回您的账户选定答案则赏金将至对方账户"
+                android:textSize="14.0sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_lightgray"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/buttom_linear_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/buttom_img_home"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/tab_home_on3x" />
+
+            <TextView
+                android:id="@+id/buttom_text_home"
+                style="@style/layout_buttoom_text"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="2dp"
+                android:text="首页" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttom_linear_forum"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/buttom_img_forum"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/tab_forum" />
+
+            <TextView
+                android:id="@+id/buttom_text_forum"
+                style="@style/layout_buttoom_text"
+                android:layout_marginBottom="2dp"
+                android:text="论坛" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/buttom_linear_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/buttom_img_info"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/tab_me_off3x" />
+
+            <TextView
+                android:id="@+id/buttom_text_info"
+                style="@style/layout_buttoom_text"
+                android:layout_marginBottom="2dp"
+                android:text="我的" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

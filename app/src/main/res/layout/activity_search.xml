@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_search" />
+
+    <ScrollView
+        android:id="@+id/search_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/search_jilu_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="最近搜索"
+                        android:textColor="@color/color_balank"
+                        android:textSize="15.0sp" />
+
+                    <LinearLayout
+                        android:id="@+id/search_clea_lay"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/delete" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/color_gray2" />
+
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tagflow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    zhy:max_select="-1">
+
+                </com.zhy.view.flowlayout.TagFlowLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:text="热门搜索"
+                android:textColor="@color/color_balank"
+                android:textSize="15.0sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/color_gray2" />
+
+            <com.yonyou.friendsandaargang.view.MyListView
+                android:id="@+id/lately_search_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:divider="@null" />
+
+
+    </LinearLayout>
+
+</LinearLayout></ScrollView>
+
+
+<com.yonyou.friendsandaargang.view.PinnedHeaderListView
+android:id="@+id/search_pinlistview"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:divider="@null"
+android:visibility="gone">
+
+</com.yonyou.friendsandaargang.view.PinnedHeaderListView>
+
+
+<ListView
+android:id="@+id/search_recyler"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:divider="@null"
+android:visibility="gone" />
+
+
+<TextView
+android:id="@+id/no_search"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:gravity="center"
+android:text="暂无搜索内容哦"
+android:textSize="16.0sp"
+android:visibility="gone" /></LinearLayout>

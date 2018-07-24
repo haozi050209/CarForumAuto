@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/layout_title_activity" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_loginstyle"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#FDF0EF"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:text="QQ用户名请完善友车帮资料，完善资料后可使用QQ进行登录" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/user" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="核桃"
+                android:textSize="16.0sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="中国  ＋86"
+                    android:textColor="#46ABF3"
+                    android:textSize="16.0sp" />
+
+                <ImageView
+                    android:layout_width="6dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/triangle" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:background="@color/e" />
+
+                <EditText
+                    android:id="@+id/phone_mobile"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="输入手机号"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="@color/color_balank"
+                    android:textColorHint="@color/_9"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@color/color_gray1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/phone_password"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="短信验证码"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:singleLine="true"
+                    android:textColor="@color/color_balank"
+                    android:textColorHint="@color/_9"
+                    android:textSize="16.0sp"
+                    android:windowSoftInputMode="stateHidden" />
+
+                <TextView
+                    android:id="@+id/phone_code"
+                    android:layout_width="70dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/shape_follow_red"
+                    android:gravity="center"
+                    android:text="获取验证码"
+                    android:textColor="@color/color_white"
+                    android:textSize="13.0sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@color/e" />
+
+            <Button
+                android:id="@+id/phone_login"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_dark"
+                android:text="提 交"
+                android:textColor="@color/color_white"
+                android:textSize="18.0sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_file"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        android:src="@drawable/ico_word"/>
+
+    <TextView
+        android:id="@+id/tv_filename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/iv_file"
+        android:textColor="#3A3A3A"
+        android:textSize="14.0sp"
+        android:text="车间配卡操作"/>
+
+    <TextView
+        android:id="@+id/tv_createdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_file"
+        android:layout_alignBottom="@+id/iv_file"
+        android:textColor="#909090"
+        android:textSize="12.0sp"
+        android:text="2018-01-21  08:12"/>
+
+    <TextView
+        android:id="@+id/tv_displaysize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_createdate"
+        android:layout_marginLeft="20dp"
+        android:layout_alignBottom="@+id/iv_file"
+        android:textColor="#909090"
+        android:textSize="12.0sp"
+        android:text="25KB"/>
+</RelativeLayout>

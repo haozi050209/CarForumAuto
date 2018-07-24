@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_activity" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/color_white">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fullraply_avae"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/user" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fullraply_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="破竹"
+                        android:textColor="@color/color_title_main"
+                        android:textSize="16.0sp" />
+
+                    <TextView
+                        android:id="@+id/fullraply__tiem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/fullraply_name"
+                        android:textColor="@color/color_balank"
+                        android:textSize="14.0sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ullraply_dianzan_lay"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/ullraply_dianzan_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="0"
+                            android:textColor="@color/color_balank"
+                            android:textSize="14.0sp" />
+
+                        <ImageView
+                            android:id="@+id/ullraply_dianzan_image"
+                            android:layout_width="20dp"
+                            android:layout_height="18dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/ico_dz" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/ullraply_content_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="5dp"
+                    android:textColor="@color/color_balank"
+                    android:textSize="14.0sp" />
+
+
+                <com.yonyou.friendsandaargang.view.MyListView
+                    android:id="@+id/ullraply_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/color_gray0"
+                    android:divider="@null" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_gray1" />
+
+        <EditText
+            android:id="@+id/fullraply_edit"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/shape_user_garly"
+            android:hint="输入回复内容"
+            android:imeOptions="actionSend"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textSize="14.0sp" />
+    </RelativeLayout>
+</LinearLayout>

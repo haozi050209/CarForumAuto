@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_activity" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/myqa_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp" />
+
+        <TextView
+            android:id="@+id/myqa_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_balank"
+            android:textSize="18.0sp" />
+
+        <TextView
+            android:id="@+id/myqa_beizhu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/color_title_main"
+            android:textSize="14.0sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/myqa_sy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="5dp"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:id="@+id/myqa_tv"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_gray1"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/myqa_jiage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textSize="18.0sp"
+            android:visibility="gone" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_gray2" />
+
+
+        <com.androidkun.xtablayout.XTabLayout
+            android:id="@+id/myqa_tablay"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            app:xTabDividerWidthWidthText="true"
+            app:xTabIndicatorColor="@color/color_red"
+            app:xTabIndicatorHeight="2dp"
+            app:xTabMode="scrollable"
+            app:xTabSelectedTextColor="@color/color_red"
+            app:xTabSelectedTextSize="16.0sp"
+            app:xTabTextColor="@color/color_balank"
+            app:xTabTextSize="16.0sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_gray1" />
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/myqa_viewpage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="visible" />
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/myqa_viewpage_big"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/myqa_recyl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

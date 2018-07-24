@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/list_item_titie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系统推送"
+                android:textColor="#333"
+                android:textSize="18.0sp" />
+
+            <TextView
+                android:id="@+id/list_item_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="用友活动及个人属性变化"
+                android:textColor="#666"
+                android:textSize="15.0sp" />
+        </LinearLayout>
+
+
+        <com.suke.widget.SwitchButton
+            android:id="@+id/switchButton1"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="10dp"
+            />
+    </FrameLayout>
+
+
+</LinearLayout>

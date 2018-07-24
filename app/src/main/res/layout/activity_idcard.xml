@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_activity" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@color/color_white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_margin="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/cardz" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:text="上传身份证正面（请保证清晰可辨）"
+                    android:textColor="@color/color_gray3"
+                    android:textSize="16.0sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@color/color_white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/photo_fan"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_margin="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/cardf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:text="上传身份证反面（请保证清晰可辨）"
+                    android:textColor="@color/color_gray3"
+                    android:textSize="16.0sp" />
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/recognize"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom"
+                android:layout_margin="30dp"
+                android:background="@drawable/shape_follow_red"
+                android:text="确认上传"
+                android:textColor="@color/color_white"
+                android:textSize="20.0sp" />
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

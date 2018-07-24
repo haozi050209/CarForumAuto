@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F3F3F3">
+
+    <include layout="@layout/layout_title_activity" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_white"
+                android:padding="15dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/prodetalis_img"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/dk" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/prodetalis_img"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/prodetalis_jb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10元金币"
+                            android:textColor="@color/color_title_main"
+                            android:textSize="16.0sp" />
+
+                        <TextView
+                            android:id="@+id/prodetalis_jb1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:text="¥10"
+                            android:textColor="@color/color_title_main"
+                            android:textSize="16.0sp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/prodetalis_cfz"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10000"
+                            android:textColor="@color/color_red"
+                            android:textSize="20.0sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="2dp"
+                            android:text="财富值"
+                            android:textColor="@color/color_title_main"
+                            android:textSize="16.0sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:text="详细说明：金币可用于悬赏及付费服务支付；不可进行提现"
+                    android:textColor="@color/color_title_main"
+                    android:textSize="16.0sp"
+                    android:id="@+id/prodetalis_sm"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="3dp"
+                    android:text="兑换流程：金币可用于悬赏及付费服务支付；不可进行提现"
+                    android:textColor="@color/color_title_main"
+                    android:textSize="16.0sp"
+                    android:id="@+id/prodetalis_lc"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="3dp"
+                    android:text="注意事项：金币可用于悬赏及付费服务支付；不可进行提现"
+                    android:textColor="@color/color_title_main"
+                    android:textSize="16.0sp"
+                    android:id="@+id/prodetalis_sx"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/prodetalis_dh"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_follow_red"
+                android:gravity="center"
+                android:text="马上兑换"
+                android:textColor="@color/color_white"
+                android:textSize="18.0sp" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/detalis_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你好世界"
+            android:textColor="#2b2b2b"
+            android:textSize="18.0sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/detalis_avaer"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/user" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/title_ray_artivl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:id="@+id/detalis_hg_fay"
+                        android:layout_width="25dp"
+                        android:layout_height="18dp"
+                        android:layout_centerVertical="true"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/detalis_hg"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/hg"/>
+
+                        <TextView
+                            android:id="@+id/detalis_hg_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="2dp"
+                            android:textColor="@color/color_white"
+                            android:textSize="10.0sp"
+                            android:text="1"/>
+                    </FrameLayout>
+
+
+                    <TextView
+                        android:id="@+id/detalis_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/detalis_hg_fay"
+                        android:textColor="@color/color_lightbalank"
+                        android:textSize="16.0sp" />
+
+                    <TextView
+                        android:id="@+id/detalis_identity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/detalis_name"
+                        android:text="楼主"
+                        android:textColor="@color/color_lightblue"
+                        android:textSize="16.0sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/detalis_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/detalis_hg_fay"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/color_lightbalank"
+                    android:textSize="14.0sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/detalis_follow"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:textSize="13.0sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

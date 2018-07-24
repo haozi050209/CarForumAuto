@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_field"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true">
+
+            <com.yonyou.friendsandaargang.view.CircleImageView
+                android:id="@+id/iv_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/logo1"/>
+
+            <ImageView
+                android:id="@+id/iv_checked"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/xuanzhong"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/rl_field"
+            android:layout_marginTop="10dp"
+            android:textSize="14.0sp"
+            android:textColor="@color/color_transparent"
+            android:text="二手车"/>
+
+    </RelativeLayout>
+</LinearLayout>

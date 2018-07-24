@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gray0"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_activity" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/authentication_txet_one"
+            android:textColor="@color/color_balank"
+            android:textSize="16.0sp" />
+
+        <RelativeLayout
+            android:id="@+id/user_rz_ray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white">
+
+            <ImageView
+                android:id="@+id/user_rz_img"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/yyjxs" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/user_rz_img"
+                android:text="用户认证"
+                android:textColor="@color/color_balank"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/user_rz_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/color_red"
+                android:textSize="16.0sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_gray3" />
+
+        <RelativeLayout
+            android:id="@+id/dakai_rz_ray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white">
+
+            <ImageView
+                android:id="@+id/dakai_rz_img"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/dk" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/dakai_rz_img"
+                android:text="大咖认证"
+                android:textColor="@color/color_balank"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/dakai_rz_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/color_red"
+                android:textSize="16.0sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/authentication_txet_two"
+            android:textColor="@color/color_balank"
+            android:textSize="16.0sp" />
+
+
+        <RelativeLayout
+            android:id="@+id/qiye_rz_ray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white">
+
+            <ImageView
+                android:id="@+id/qiye_rz_img"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/yyjxs" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/qiye_rz_img"
+                android:text="经销商认证"
+                android:textColor="@color/color_balank"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/qiye_rz_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/color_red"
+                android:textSize="16.0sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

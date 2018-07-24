@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_but_selector"
+        android:title="首页"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:enabled="true"
+        android:icon="@drawable/ic_froum_but_selector"
+        android:title="论坛"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:enabled="true"
+        android:icon="@drawable/ic_mine_but_selector"
+        android:title="我的"
+        app:showAsAction="ifRoom" />
+</menu>

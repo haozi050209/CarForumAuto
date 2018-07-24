@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_activity" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/color_gray2"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="相关问题"
+        android:textColor="@color/color_balank"
+        android:textSize="16.0sp" />
+
+
+    <com.yonyou.friendsandaargang.view.MyListView
+        android:id="@+id/search_result_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:divider="@color/color_gray1"
+        android:dividerHeight="1px" />
+
+
+</LinearLayout>
