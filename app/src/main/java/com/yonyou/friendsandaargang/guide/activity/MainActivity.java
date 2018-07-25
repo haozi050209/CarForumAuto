@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,12 +40,15 @@ import com.yonyou.friendsandaargang.utils.ToastUtils;
 import com.yonyou.friendsandaargang.view.MyViewPager;
 import com.yonyou.friendsandaargang.view.dialog.DialogSureCancel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.jpush.android.api.JPushInterface;
 import retrofit2.Call;
 
-public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements  BottomNavigationView.OnNavigationItemSelectedListener {
 
 
     //按键返回
@@ -53,46 +58,16 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
      * ==========================================
      */
 
-
     @BindView(R.id.navigation)
     BottomNavigationView navigationView;
 
-
-    //viewpager
-    @BindView(R.id.home_viewpager)
-    MyViewPager viewPager;
-
-    @BindView(R.id.buttom_img_home)
-    ImageView home_image;
-    @BindView(R.id.buttom_text_home)
-    TextView home_text;
-
-    @BindView(R.id.buttom_img_forum)
-    ImageView forum_image;
-    @BindView(R.id.buttom_text_forum)
-    TextView forum_text;
-
-    @BindView(R.id.buttom_img_info)
-    ImageView info_image;
-    @BindView(R.id.buttom_text_info)
-    TextView info_text;
     private boolean islogin;
-    private String userId;
-    private String registrationId;
+    private String userId,registrationId;
 
-    private MenuItem menuItem;
-
-
-    private String ak;
-    private String token;
-    private String sk;
-    private String expiration;
-    private String endpoint;
-    private String bucketName;
-    private String objectKey;
-    private String verName;
+    private String ak,token,sk,expiration,verName;
     private int verCode;
     private DialogSureCancel dialog;
+    private List<Fragment> fragments;
 
 
     @Override
@@ -125,38 +100,52 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
      * 序列化
      */
     private void initviews() {
-
-        //保存极光id
-        SPTool.putContent(mContext, Constants.REGISTRATIONID, JPushInterface.getRegistrationID(this));
-
+        fragments = new ArrayList<>();
+        SPTool.putContent(mContext, Constants.REGISTRATIONID, JPushInterface.getRegistrationID(this));  //保存极光id
         userId = SPTool.getContent(mContext, Constants.USER_ID);
         registrationId = SPTool.getContent(mContext, Constants.REGISTRATIONID);
-
-
         verCode = APKVersionCodeUtils.getVersionCode(mContext);
         verName = APKVersionCodeUtils.getVerName(mContext);
-
-
-        //是否登陆
-        islogin = SPTool.getBoolean(MainActivity.this, Constants.ISLOGIN);
+        islogin = SPTool.getBoolean(MainActivity.this, Constants.ISLOGIN);   //是否登陆
         navigationView.setOnNavigationItemSelectedListener(this);
-
-        setupViewPager(viewPager);
-        viewPager.addOnPageChangeListener(this);
+        showFragment(HomePagerFragemnt.newInstance(""));       //默认第一个是首页的fragenmt
         if (islogin) {
             getVersionCode();
         }
 
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentAdapter adapter = new FragmentAdapter(fragmentManager);
-        adapter.addFragment(new HomePagerFragemnt());
-        adapter.addFragment(new ForumFragment());
-        adapter.addFragment(new InfoFragemnt());
-        viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(3);//参数为预加载数量，系统最小值为1。慎用！预加载数量过多低端机子受不了
+
+    /**
+     * 显示Fragment
+     */
+    private void showFragment(Fragment fragment) {
+        if (fragment == null) {
+            return;
+        }
+        if (!fragments.contains(fragment)) {
+            fragments.add(fragment);
+        }
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        if (!fragment.isAdded()) {
+            transaction.add(R.id.main_container, fragment);
+        }
+        hideFragment(transaction);
+        transaction.show(fragment);
+        transaction.commit();
+    }
+
+
+    /**
+     * 隐藏所有的fragment
+     */
+    private void hideFragment(FragmentTransaction transaction) {
+        for (int i = 0; i < fragments.size(); i++) {
+            if (fragments.get(i) != null) {
+                transaction.hide(fragments.get(i));
+            }
+        }
     }
 
     /**
@@ -202,9 +191,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         sk = bucketList.getContent().getAccessKeySecret();
         token = bucketList.getContent().getSecurityToken() + "";
         expiration = bucketList.getContent().getExpiration() + "";
-        endpoint = bucketList.getContent().getBucketList().get(0).getEndPoint() + "";
-        bucketName = bucketList.getContent().getBucketList().get(0).getBucketName() + "";
-        objectKey = bucketList.getContent().getBucketList().get(0).getRemark() + "";
         SPTool.putContent(getApplicationContext(), Constants.AK, ak);
         SPTool.putContent(getApplicationContext(), Constants.SK, sk);
         SPTool.putContent(getApplicationContext(), Constants.TOKEN, token);
@@ -242,28 +228,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     }
 
 
-    /**
-     * viewpage  监听事件
-     *
-     * @param position
-     * @param positionOffset
-     * @param positionOffsetPixels
-     */
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        navigationView.getMenu().getItem(position).setChecked(true);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-
 
     /**
      * navigationView  监听事件
@@ -273,16 +237,15 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.navigation_home:
-                viewPager.setCurrentItem(0);
+                showFragment(HomePagerFragemnt.newInstance(""));
                 return true;
             case R.id.navigation_dashboard:
-                viewPager.setCurrentItem(1);
+                showFragment(ForumFragment.newInstance(""));
                 return true;
             case R.id.navigation_notifications:
-                viewPager.setCurrentItem(2);
+                showFragment(InfoFragemnt.newInstance(""));
                 return true;
         }
         return false;

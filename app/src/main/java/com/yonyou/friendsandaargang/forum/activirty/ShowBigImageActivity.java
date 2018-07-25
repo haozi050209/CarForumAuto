@@ -6,17 +6,12 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.jaeger.library.StatusBarUtil;
 import com.yonyou.friendsandaargang.R;
 import com.yonyou.friendsandaargang.base.BaseActivity;
 import com.yonyou.friendsandaargang.base.GlideManager;
 import com.yonyou.friendsandaargang.utils.ImageUtils;
-import com.yonyou.friendsandaargang.utils.Logger;
-import com.yonyou.friendsandaargang.utils.SDCardUtil;
-import com.yonyou.friendsandaargang.utils.StatusUtil;
 import com.yonyou.friendsandaargang.utils.ToastUtils;
-import com.yonyou.friendsandaargang.view.dialog.DialogShowImage;
 import com.yonyou.friendsandaargang.view.dialog.SaveImageDialog;
 
 import butterknife.BindView;
@@ -60,6 +55,7 @@ public class ShowBigImageActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onPhotoTap(View view, float x, float y) {
                 mContext.finish();
+                //overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
             }
         });
 

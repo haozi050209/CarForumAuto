@@ -11,9 +11,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-/**
- * @author Huangshuang  2017/7/4
- */
+
 
 public class BuildProperties {
 

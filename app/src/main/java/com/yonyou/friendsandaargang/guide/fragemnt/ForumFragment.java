@@ -16,7 +16,6 @@ import com.yonyou.friendsandaargang.base.Constants;
 import com.yonyou.friendsandaargang.forum.adapter.SimpleFragmentPagerAdapter;
 import com.yonyou.friendsandaargang.forum.fragemnt.EssenceFragment;
 import com.yonyou.friendsandaargang.forum.fragemnt.FollowFragment;
-import com.yonyou.friendsandaargang.homepage.activity.PostActivity;
 import com.yonyou.friendsandaargang.homepage.activity.PublishPostActivity;
 import com.yonyou.friendsandaargang.homepage.activity.SearchActivity;
 import com.yonyou.friendsandaargang.login.activity.ActivityLogin;
@@ -47,6 +46,22 @@ public class ForumFragment extends Fragment {
     private ForumDialog forumDialog;
     private DialogLogin dialogLogin;
     private boolean isLogin;
+
+
+
+
+
+    private static ForumFragment fragment;
+
+    public static ForumFragment newInstance(String msg) {
+        Bundle args = new Bundle();
+        args.putString("msg", msg);
+        if (fragment == null) {
+            fragment = new ForumFragment();
+        }
+        fragment.setArguments(args);
+        return fragment;
+    }
 
 
     @Override

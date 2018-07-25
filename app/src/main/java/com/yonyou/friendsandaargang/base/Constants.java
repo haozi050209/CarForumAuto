@@ -10,7 +10,6 @@ package com.yonyou.friendsandaargang.base;
 public class Constants {
 
 
-//    public static final String URL_BAIDU_SEARCH = "http://www.baidu.com/s?wd=";
 
 
     /*极光推送唯一识别号*/

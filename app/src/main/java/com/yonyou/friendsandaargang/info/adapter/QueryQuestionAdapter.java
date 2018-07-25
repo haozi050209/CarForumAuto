@@ -17,7 +17,9 @@ import com.yonyou.friendsandaargang.info.bean.RecordBean;
 import com.yonyou.friendsandaargang.info.bean.Tel;
 import com.yonyou.friendsandaargang.network.ApiClient;
 import com.yonyou.friendsandaargang.network.ApiService;
+import com.yonyou.friendsandaargang.network.HttpCallBackImpl;
 import com.yonyou.friendsandaargang.network.HttpResult;
+import com.yonyou.friendsandaargang.network.NetRetrofitCallback;
 import com.yonyou.friendsandaargang.network.RetrofitCallback;
 import com.yonyou.friendsandaargang.utils.ToastUtils;
 import com.yonyou.friendsandaargang.view.dialog.DialogSureCancel;
@@ -259,29 +261,13 @@ public class QueryQuestionAdapter extends BaseAdapter {
     //获取客服电话
     private void getCustServTel() {
         Call<Tel> call = apiService.getCustServTel();
-        call.enqueue(new RetrofitCallback<Tel>() {
+        call.enqueue(new NetRetrofitCallback<Tel>(context, new HttpCallBackImpl<Tel>() {
             @Override
-            public void onSuccess(Tel model) {
+            public void onResponseCallback(Tel model) {
                 if (model.getReturnMsg().equals("success") && model.getReturnCode() == 0) {
                     tel = model.getContent().toString();
                 }
             }
-
-            @Override
-            public void onFailure(int code, String msg) {
-                ToastUtils.normal(context, "服务器异常").show();
-
-            }
-
-            @Override
-            public void onThrowable(Throwable t) {
-
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        });
+        }));
     }
 }

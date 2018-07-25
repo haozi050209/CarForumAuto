@@ -24,7 +24,6 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 import com.yonyou.friendsandaargang.R;
 import com.yonyou.friendsandaargang.base.BaseActivity;
 import com.yonyou.friendsandaargang.base.Constants;
-import com.yonyou.friendsandaargang.homepage.activity.PostActivity;
 import com.yonyou.friendsandaargang.homepage.activity.PublishPostActivity;
 import com.yonyou.friendsandaargang.info.adapter.DraftAdapter;
 import com.yonyou.friendsandaargang.info.bean.Draft;
@@ -33,13 +32,10 @@ import com.yonyou.friendsandaargang.network.HttpResult;
 import com.yonyou.friendsandaargang.network.NetRetrofitCallback;
 import com.yonyou.friendsandaargang.network.NetUtils;
 import com.yonyou.friendsandaargang.network.ResponseCallBack;
-import com.yonyou.friendsandaargang.network.RetrofitCallback;
 import com.yonyou.friendsandaargang.utils.Logger;
 import com.yonyou.friendsandaargang.utils.SPTool;
 import com.yonyou.friendsandaargang.utils.ToastUtils;
 import com.yonyou.friendsandaargang.utils.listener.OnItemClickListener;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

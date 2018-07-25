@@ -87,6 +87,21 @@ public class InfoFragemnt extends Fragment implements View.OnClickListener {
     private UserInfo userInfo;
     private DialogSureCancel dialogSureCancel;
 
+
+    private static InfoFragemnt fragment;
+
+
+    public static InfoFragemnt newInstance(String msg) {
+        Bundle args = new Bundle();
+        args.putString("msg", msg);
+        if (fragment == null) {
+            fragment = new InfoFragemnt();
+        }
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,14 +124,13 @@ public class InfoFragemnt extends Fragment implements View.OnClickListener {
             getUserInfo();
         }
     }
-
+    /**
+     * 没有登陆就隐藏 等级与个性签名
+     */
     private void initviews() {
         UserId = SPTool.getContent(getActivity(), Constants.USER_ID);
         isLogin = SPTool.getBoolean(getActivity(), Constants.ISLOGIN);
         if (!isLogin) {
-            /**
-             * 没有登陆就隐藏 等级与个性签名
-             */
             info_hg_fay.setVisibility(View.GONE);
             user_img.setImageResource(R.drawable.user);
             explain_text.setText("签名是一种态度！");

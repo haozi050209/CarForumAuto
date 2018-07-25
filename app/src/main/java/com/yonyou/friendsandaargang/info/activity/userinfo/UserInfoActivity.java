@@ -3,11 +3,11 @@ package com.yonyou.friendsandaargang.info.activity.userinfo;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.sdk.android.oss.ClientException;
-import com.alibaba.sdk.android.oss.OSS;
 import com.alibaba.sdk.android.oss.ServiceException;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.bigkoo.pickerview.TimePickerView;
@@ -46,7 +46,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 
 import static com.lzy.imagepicker.ImagePicker.REQUEST_CODE_PREVIEW;
-import static com.yonyou.friendsandaargang.homepage.activity.PostActivity.REQUEST_CODE_SELECT;
 import static com.yonyou.friendsandaargang.utils.TimeUtil.getTime;
 
 
@@ -58,6 +57,8 @@ import static com.yonyou.friendsandaargang.utils.TimeUtil.getTime;
 
 public class UserInfoActivity extends BaseActivity implements View.OnClickListener
         , OssService.picResultCallback {
+
+    public static final int REQUEST_CODE_SELECT = 100;
     //头像
     @BindView(R.id.user_head_img)
     CircleImageView head_img;
@@ -84,91 +85,72 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     //认证
     @BindView(R.id.user_authentication_text)
     TextView authentication_text;
-    private DialogUploadPicture dialogUploadPicture;
+    private DialogUploadPicture dialog;
     //日期选择器
     private TimePickerView pvTime;
-    private String userId;
+    private String userId, birthday, region, signature, nickname, nickNames, avatar, areaId, authDesc, objectName;
     private int gender;
-    private String birthday;
-    private String region;
-    private String signature;
-    private String nickname;
-    private String nickNames;
-    private String avatar;
-    private String areaId;
-    private String authDesc;
-    private ArrayList<ImageItem> images = null;
+    private ArrayList<ImageItem> images;
     //上传到oss服务器上
     private String endpoint = "https://oss-cn-hangzhou.aliyuncs.com";
-    private OSS oss;
     private String bucketName = "yonyou-community-app-images";
     //OSS的上传下载
     private OssService ossService;
-
     private Long time;
-    private String objectName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userinfo);
         ButterKnife.bind(this);
-        getTitleBar();
-        setTitleText("个人信息");
         intiviews();
-        ossService = initOSS(endpoint, bucketName);
-        initImagePicker();
+
     }
 
     //初始化
     private void intiviews() {
+        getTitleBar();
+        setTitleText("个人信息");
+        ossService = initOSS(endpoint, bucketName);
+        initImagePicker();
         userId = SPTool.getContent(mContext, Constants.USER_ID);
         //头像
-        if (getIntent().getStringExtra(Constants.HEADIMAGE) != null
-                && !equals(getIntent().getStringExtra(Constants.HEADIMAGE))) {
+        if (!TextUtils.isEmpty(getIntent().getStringExtra(Constants.HEADIMAGE))) {
             GlideManager.loadImage(mContext, getIntent().getStringExtra(Constants.HEADIMAGE), R.drawable.user, head_img);
         }
         //用户名
-        if (getIntent().getStringExtra(Constants.USER_NAME) != null
-                && !equals(getIntent().getStringExtra(Constants.USER_NAME))) {
+        if (!TextUtils.isEmpty(getIntent().getStringExtra(Constants.USER_NAME))) {
             user_username_text.setText(getIntent().getStringExtra(Constants.USER_NAME));
         }
         //昵称
-        if (getIntent().getStringExtra(Constants.NIKE_NAME) != null
-                && !equals(getIntent().getStringExtra(Constants.NIKE_NAME))) {
+        if (!TextUtils.isEmpty(getIntent().getStringExtra(Constants.NIKE_NAME))) {
             nikename_text.setText(getIntent().getStringExtra(Constants.NIKE_NAME));
             nickname = getIntent().getStringExtra(Constants.NIKE_NAME);
         }
-
         //性别
-        if (getIntent().getStringExtra(Constants.GENDER) != null
-                && !equals(getIntent().getStringExtra(Constants.GENDER))) {
+        if (!TextUtils.isEmpty(getIntent().getStringExtra(Constants.GENDER))) {
             sex_text.setText(getIntent().getStringExtra(Constants.GENDER));
         }
         //生日
-        if (getIntent().getStringExtra(Constants.BIRTHDAY) != null
-                && !equals(getIntent().getStringExtra(Constants.BIRTHDAY))) {
+        if (!TextUtils.isEmpty(getIntent().getStringExtra(Constants.BIRTHDAY))) {
             birthday_text.setText(getIntent().getStringExtra(Constants.BIRTHDAY));
         } else {
             birthday_text.setText("请完善生日");
         }
         //地区
-        if (getIntent().getStringExtra(Constants.REGINON) != null
-                && !equals(getIntent().getStringExtra(Constants.REGINON))) {
+        if (!TextUtils.isEmpty(getIntent().getStringExtra(Constants.REGINON))) {
             region_text.setText(getIntent().getStringExtra(Constants.REGINON));
         } else {
             region_text.setText("请选择地区");
         }
         //签名
-        if (getIntent().getStringExtra(Constants.AUTOGRAPH) != null
-                && !equals(getIntent().getStringExtra(Constants.AUTOGRAPH))) {
+        if (!TextUtils.isEmpty(getIntent().getStringExtra(Constants.AUTOGRAPH))) {
             autograph_text.setText(getIntent().getStringExtra(Constants.AUTOGRAPH));
             signature = getIntent().getStringExtra(Constants.AUTOGRAPH);
         } else {
             autograph_text.setText("请设置签名");
         }
-
-        if (getIntent().getStringExtra(Constants.AUTHDESC) != null) {
+        if (!TextUtils.isEmpty(getIntent().getStringExtra(Constants.AUTHDESC))) {
             authDesc = getIntent().getStringExtra(Constants.AUTHDESC);
             if (authDesc.equals("已认证") || authDesc.equals("认证中")) {
                 authentication_text.setText(authDesc);
@@ -178,8 +160,9 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         }
 
         //弹窗
-        dialogUploadPicture = new DialogUploadPicture(this);
-
+        dialog = new DialogUploadPicture(this);
+        dialog.getWindow().findViewById(android.support.design.R.id.design_bottom_sheet)
+                .setBackgroundResource(android.R.color.transparent);
 
     }
 
@@ -307,47 +290,44 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 
 
     private void showSexDialog() {
-        dialogUploadPicture.setCancelable(false);
-        dialogUploadPicture.getCancel().setText("取消");
-        dialogUploadPicture.getAlbum().setText("女");
-        dialogUploadPicture.getPhotograph().setText("男");
-        dialogUploadPicture.setPhotographListener(new View.OnClickListener() {
+        dialog.getCancel().setText("取消");
+        dialog.getAlbum().setText("女");
+        dialog.getPhotograph().setText("男");
+        dialog.setPhotographListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sex_text.setText("男");
-                dialogUploadPicture.dismiss();
+                dialog.dismiss();
                 gender = 10041001;
                 getupdateUser("");
             }
         });
-        dialogUploadPicture.setAlbumListener(new View.OnClickListener() {
+        dialog.setAlbumListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sex_text.setText("女");
-                dialogUploadPicture.dismiss();
+                dialog.dismiss();
                 gender = 10041002;
                 getupdateUser("");
             }
         });
 
-        dialogUploadPicture.setCancelListener(new View.OnClickListener() {
+        dialog.setCancelListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogUploadPicture.dismiss();
+                dialog.dismiss();
             }
         });
 
-        dialogUploadPicture.show();
+        dialog.show();
     }
 
 
     private void DialogChooseImage() {
-        dialogUploadPicture = new DialogUploadPicture(this);
-        dialogUploadPicture.getCancel().setText("取消");
-        dialogUploadPicture.getAlbum().setText("选择相册");
-        dialogUploadPicture.getPhotograph().setText("相机");
-        dialogUploadPicture.setCancelable(false);
-        dialogUploadPicture.setPhotographListener(new View.OnClickListener() {
+        dialog.getCancel().setText("取消");
+        dialog.getAlbum().setText("选择相册");
+        dialog.getPhotograph().setText("相机");
+        dialog.setPhotographListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //打开选择,本次允许选择的数量
@@ -355,27 +335,27 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                 Intent intent = new Intent(UserInfoActivity.this, ImageGridActivity.class);
                 intent.putExtra(ImageGridActivity.EXTRAS_TAKE_PICKERS, true); // 是否是直接打开相机
                 startActivityForResult(intent, REQUEST_CODE_SELECT);
-                dialogUploadPicture.dismiss();
+                dialog.dismiss();
             }
         });
-        dialogUploadPicture.setAlbumListener(new View.OnClickListener() {
+        dialog.setAlbumListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //打开选择,本次允许选择的数量
                 ImagePicker.getInstance().setSelectLimit(1);
                 Intent intent1 = new Intent(UserInfoActivity.this, ImageGridActivity.class);
                 startActivityForResult(intent1, REQUEST_CODE_SELECT);
-                dialogUploadPicture.dismiss();
+                dialog.dismiss();
             }
         });
 
-        dialogUploadPicture.setCancelListener(new View.OnClickListener() {
+        dialog.setCancelListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogUploadPicture.dismiss();
+                dialog.dismiss();
             }
         });
-        dialogUploadPicture.show();
+        dialog.show();
     }
 
 

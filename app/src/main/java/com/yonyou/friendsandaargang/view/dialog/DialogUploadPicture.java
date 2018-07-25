@@ -1,6 +1,7 @@
 package com.yonyou.friendsandaargang.view.dialog;
 
 import android.content.Context;
+import android.support.design.widget.BottomSheetDialog;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,7 @@ import com.yonyou.friendsandaargang.R;
  * Created by shibing on 18/4/8.
  */
 
-public class DialogUploadPicture extends DialogUtils {
+public class DialogUploadPicture extends BottomSheetDialog {
 
 
     private TextView photograph;
@@ -58,10 +59,7 @@ public class DialogUploadPicture extends DialogUtils {
         initviews();
     }
 
-    public DialogUploadPicture(Context context, float alpha, int gravity) {
-        super(context, alpha, gravity);
-        initviews();
-    }
+
 
 
     //拍照
@@ -85,6 +83,5 @@ public class DialogUploadPicture extends DialogUtils {
         album = view.findViewById(R.id.album);
         cancel = view.findViewById(R.id.cancel);
         setContentView(view);
-        mLayoutParams.gravity = Gravity.BOTTOM;
     }
 }

@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 import com.yonyou.friendsandaargang.R;
-import com.yonyou.friendsandaargang.homepage.activity.PostActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,7 @@ public class ImagePickerAdapter extends RecyclerView.Adapter<ImagePickerAdapter.
     private LayoutInflater mInflater;
     private OnRecyclerViewItemClickListener listener;
     private boolean isAdded;   //是否额外添加了最后一个图片
-
+    public static final int IMAGE_ITEM_ADD = -1;
     public interface OnRecyclerViewItemClickListener {
         void onItemClick(View view, int position);
     }
@@ -87,7 +86,7 @@ public class ImagePickerAdapter extends RecyclerView.Adapter<ImagePickerAdapter.
             ImageItem item = mData.get(position);
             if (isAdded && position == getItemCount() - 1) {
                 iv_img.setImageResource(R.drawable.tjzp);
-                clickPosition = PostActivity.IMAGE_ITEM_ADD;
+                clickPosition = IMAGE_ITEM_ADD;
             } else {
                 ImagePicker.getInstance().getImageLoader().displayImage((Activity) mContext, item.path, iv_img, 0, 0);
                 clickPosition = position;

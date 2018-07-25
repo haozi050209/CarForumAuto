@@ -78,25 +78,17 @@ public class UserAuthenticationActivity extends BaseActivity implements ImagePic
     private ArrayList<String> arrayList;
     private List<String> listTime;
 
-    private DialogUploadPicture dialogUploadPicture;
+    private DialogUploadPicture dialog;
     //OSS的上传下载
     private OssService ossService;
     private String endpoint = "https://oss-cn-hangzhou.aliyuncs.com";
     private String bucketName = "yonyou-community-app-images";
 
-    private String forum;                      // 是用户还是大咖
-    private String userId;                    //  id必填
-    private String realName;                  //  身份证姓名 必填
-    private String idNumber;                  //  身份证号码 必填
-    private String industry;                  //  行业 必填
-    private String organization;              //  单位/组织 必填
-    private String jobId;                     //  职位 必填
-    private String identityType;              //  认证类型 必填 10211001用户认证，10211002大咖认证，10211003经销商认证
-    private String mediaUrl;                  //  自媒体连接 （用于大咖）
-    private String attachmentList;            //  必填 附件名称，即文件在OSS上的KEY值
-    private String idCardList;                //  必填 身份证照片名称
-    private String objectname;                //  附件名称
-    private String path;                      //  图片地址
+
+    //  id必填 身份证姓名 必填   身份证号码 必填 行业 必填 单位/组织 必填  职位 必填
+    // 认证类型 必填 10211001用户认证，10211002大咖认证，10211003经销商认证 自媒体连接 （用于大咖） 必填 附件名称，即文件在OSS上的KEY值 必填
+    //   附件名称  身份证照片名称 图片地址
+    private String forum, userId, realName, idNumber, industry, organization, jobId, identityType, mediaUrl, objectname, path;
     private JSONArray jsonArray;              //  上传图片的json数据
     private JSONObject requestData;           //  最外层的数据
     private JSONArray idJsonArray;            //  身份证的json数组
@@ -106,14 +98,16 @@ public class UserAuthenticationActivity extends BaseActivity implements ImagePic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userauthentication);
         ButterKnife.bind(this);
-        ossService = initOSS(endpoint, bucketName);
+
         initviews();
     }
 
 
     private void initviews() {
-        getTitleBar();
+        ossService = initOSS(endpoint, bucketName);
+        initImagePicker();
         userId = SPTool.getContent(mContext, Constants.USER_ID);
+        getTitleBar();
         if (getIntent().getStringExtra("identityType") != null) {
             identityType = getIntent().getStringExtra("identityType");
             switch (identityType) {
@@ -125,23 +119,16 @@ public class UserAuthenticationActivity extends BaseActivity implements ImagePic
                     break;
             }
         }
-        forum = getIntent().getStringExtra("forum");
-        if (forum.equals("userAu")) {
+        if (getIntent().getStringExtra("forum").equals("userAu")) {
             mediaurl_ed.setVisibility(View.GONE);
         } else {
             mediaurl_ed.setVisibility(View.VISIBLE);
             mediaUrl = mediaurl_ed.getText().toString();
         }
-
-
         user_rz_industry.setCursorVisible(false);
         user_rz_school.setCursorVisible(false);
-
-
-        initImagePicker();
         selImageList = new ArrayList<>();
         listTime = new ArrayList<>();   //上传服务器时间
-
         adapter = new ImagePickerAdapter(this, selImageList, maxImgCount);
         adapter.setOnItemClickListener(this);
         user_rz_photo_grid.setLayoutManager(new GridLayoutManager(this, 3) {
@@ -152,8 +139,6 @@ public class UserAuthenticationActivity extends BaseActivity implements ImagePic
         });
         user_rz_photo_grid.setHasFixedSize(true);
         user_rz_photo_grid.setAdapter(adapter);
-
-
     }
 
 
@@ -210,44 +195,7 @@ public class UserAuthenticationActivity extends BaseActivity implements ImagePic
     public void onItemClick(View view, int position) {
         switch (position) {
             case IMAGE_ITEM_ADD:
-                dialogUploadPicture = new DialogUploadPicture(this);
-                dialogUploadPicture.getCancel().setText("取消");
-                dialogUploadPicture.getAlbum().setText("选择相册");
-                dialogUploadPicture.getPhotograph().setText("相机");
-                dialogUploadPicture.setCancelable(false);
-                dialogUploadPicture.setPhotographListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //打开选择,本次允许选择的数量
-                        ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
-                        Intent intent = new Intent(UserAuthenticationActivity.this, ImageGridActivity.class);
-                        intent.putExtra(ImageGridActivity.EXTRAS_TAKE_PICKERS, true); // 是否是直接打开相机
-                        startActivityForResult(intent, REQUEST_CODE_SELECT);
-                        dialogUploadPicture.dismiss();
-                    }
-                });
-                dialogUploadPicture.setAlbumListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //打开选择,本次允许选择的数量
-                        ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
-                        Intent intent1 = new Intent(UserAuthenticationActivity.this, ImageGridActivity.class);
-                                /* 如果需要进入选择的时候显示已经选中的图片，
-                                 * 详情请查看ImagePickerActivity
-                                 * */
-//                                intent1.putExtra(ImageGridActivity.EXTRAS_IMAGES,images);
-                        startActivityForResult(intent1, REQUEST_CODE_SELECT);
-                        dialogUploadPicture.dismiss();
-                    }
-                });
-
-                dialogUploadPicture.setCancelListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialogUploadPicture.dismiss();
-                    }
-                });
-                dialogUploadPicture.show();
+                showDialog();
                 break;
             default:
                 //打开预览
@@ -260,6 +208,48 @@ public class UserAuthenticationActivity extends BaseActivity implements ImagePic
         }
     }
 
+
+    private void showDialog() {
+        dialog = new DialogUploadPicture(this);
+        dialog.getWindow().findViewById(android.support.design.R.id.design_bottom_sheet)
+                .setBackgroundResource(android.R.color.transparent);
+        dialog.getCancel().setText("取消");
+        dialog.getAlbum().setText("选择相册");
+        dialog.getPhotograph().setText("相机");
+        dialog.setPhotographListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //打开选择,本次允许选择的数量
+                ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
+                Intent intent = new Intent(mContext, ImageGridActivity.class);
+                intent.putExtra(ImageGridActivity.EXTRAS_TAKE_PICKERS, true); // 是否是直接打开相机
+                startActivityForResult(intent, REQUEST_CODE_SELECT);
+                dialog.dismiss();
+            }
+        });
+        dialog.setAlbumListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //打开选择,本次允许选择的数量
+                ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
+                Intent intent1 = new Intent(mContext, ImageGridActivity.class);
+                                /* 如果需要进入选择的时候显示已经选中的图片，
+                                 * 详情请查看ImagePickerActivity
+                                 * */
+//                                intent1.putExtra(ImageGridActivity.EXTRAS_IMAGES,images);
+                startActivityForResult(intent1, REQUEST_CODE_SELECT);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCancelListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 
     /**
      * 处理选择回来时图片
@@ -360,7 +350,6 @@ public class UserAuthenticationActivity extends BaseActivity implements ImagePic
                     }
                     //上传认证图片
                     for (int i = 0; i < selImageList.size(); i++) {
-                        //objectname = userId + "-" + TimeUtil.getDateTimeFromMil(System.currentTimeMillis()) + i;
                         path = selImageList.get(i).path;
                         ossService.asyncPutImage("user-identity/" + listTime.get(i), path);
                     }
@@ -381,8 +370,6 @@ public class UserAuthenticationActivity extends BaseActivity implements ImagePic
 
     @Override
     public void getPicData(PutObjectRequest data) {
-        Logger.e("-------", data.getObjectKey());
-        Logger.e("-------", data.getUploadFilePath());
     }
 
     //失败回调

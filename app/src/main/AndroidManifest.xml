@@ -344,9 +344,6 @@
             android:name=".forum.activirty.FollowForumActivity"
             android:screenOrientation="portrait" />
         <!-- 发帖 -->
-        <activity
-            android:name=".homepage.activity.PostActivity"
-            android:screenOrientation="portrait" />
         <!-- 更多话题 -->
         <activity
             android:name=".forum.activirty.MoreHautiActivity"

@@ -1,4 +1,4 @@
-package com.yonyou.friendsandaargang.view;
+package com.yonyou.friendsandaargang.view.dialog;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,8 +7,7 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.view.View;
 import android.view.ViewGroup;
-
-import static com.yonyou.friendsandaargang.utils.DeviceTool.getScreenHeight;
+import static com.yonyou.friendsandaargang.utils.CommonUtil.getScreenHeight;
 import static com.yonyou.friendsandaargang.utils.StatusUtil.getStatusBarHeight;
 
 
@@ -18,17 +17,19 @@ import static com.yonyou.friendsandaargang.utils.StatusUtil.getStatusBarHeight;
 
 public abstract class XBottomDialog extends BottomSheetDialog implements View.OnClickListener {
     public View view;
-    protected Context mContext;
+    protected Activity activity;
 
-    public XBottomDialog(@NonNull Context mContext) {
-        super(mContext);
-        this.mContext = mContext;
 
-        view = View.inflate(mContext, getLayoutId(), null);
+    public XBottomDialog(@NonNull Activity activity) {
+        super(activity);
+        this.activity = activity;
+
+        view = View.inflate(activity, getLayoutId(), null);
         setContentView(view);
 
         initView();
         setListener();
+
     }
 
     protected abstract int getLayoutId();
@@ -56,7 +57,7 @@ public abstract class XBottomDialog extends BottomSheetDialog implements View.On
      * 处理在某些手机上面存在状态栏不透明的问题
      */
     private void init() {
-        int screenHeight = getScreenHeight(mContext);
+        int screenHeight = getScreenHeight(activity);
         int statusBarHeight = getStatusBarHeight(getContext());
         int dialogHeight = screenHeight - statusBarHeight;
         if (getWindow() != null) {
@@ -70,4 +71,5 @@ public abstract class XBottomDialog extends BottomSheetDialog implements View.On
     public void onClick(View v) {
 
     }
+
 }

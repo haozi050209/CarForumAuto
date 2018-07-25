@@ -31,7 +31,6 @@ import com.yonyou.friendsandaargang.forum.bean.Follow;
 import com.yonyou.friendsandaargang.guide.adapter.GlideImageLoader;
 import com.yonyou.friendsandaargang.guide.bean.Roll;
 import com.yonyou.friendsandaargang.homepage.activity.BannerDetailsActivity;
-import com.yonyou.friendsandaargang.homepage.activity.PostActivity;
 import com.yonyou.friendsandaargang.homepage.activity.PublishPostActivity;
 import com.yonyou.friendsandaargang.homepage.activity.SearchActivity;
 import com.yonyou.friendsandaargang.homepage.adapter.NavigationbarAdapter;
@@ -100,15 +99,12 @@ public class HomePagerFragemnt extends Fragment implements View.OnClickListener
     TextView no_nrirong;
     @BindView(R.id.text_roll_two)
     TextViewVertical text_roll_two;
-
-
     //导航栏适配器
     private NavigationbarAdapter navigationbarAdapter;
     //滚动信息
     private List<Roll.ContentBean> textList;
     //导航栏数据
     private List<NavigationBean> list;
-
     private List<Follow.ContentBean> contentList;
     private ArrayList<String> arrayList;
 
@@ -131,6 +127,21 @@ public class HomePagerFragemnt extends Fragment implements View.OnClickListener
     private ApiService communityService;
     private List<String> listBanner;
     private List<BannerBean.ContentBean> listBannerBean;
+
+
+    private static HomePagerFragemnt fragment;
+
+
+    public static HomePagerFragemnt newInstance(String msg) {
+        Bundle args = new Bundle();
+        args.putString("msg", msg);
+        if (fragment == null) {
+            fragment = new HomePagerFragemnt();
+        }
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

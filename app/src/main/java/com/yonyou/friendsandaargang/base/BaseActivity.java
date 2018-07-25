@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.http.SslError;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
@@ -15,6 +17,11 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.JavascriptInterface;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,15 +36,13 @@ import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.view.CropImageView;
 import com.umeng.analytics.MobclickAgent;
 import com.yonyou.friendsandaargang.R;
+import com.yonyou.friendsandaargang.forum.activirty.ShowBigImageActivity;
 import com.yonyou.friendsandaargang.jpush.ExampleUtil;
 import com.yonyou.friendsandaargang.network.ApiClient;
 import com.yonyou.friendsandaargang.network.ApiService;
 import com.yonyou.friendsandaargang.network.OssService;
 import com.yonyou.friendsandaargang.utils.GlideImageLoader;
-import com.yonyou.friendsandaargang.utils.NetworkConnected;
 import com.yonyou.friendsandaargang.utils.SPTool;
-import com.yonyou.friendsandaargang.utils.StatusUtil;
-import com.yonyou.friendsandaargang.utils.ToastUtils;
 import com.yonyou.friendsandaargang.view.dialog.LoadingDialog;
 
 import cn.jpush.android.api.JPushInterface;
@@ -52,10 +57,8 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     private LinearLayout imageView;   //左边返回按钮
     private TextView title, texttitle, tvRight;        //title
     private int color;
-
-    private ProgressDialog dialog;
     private LoadingDialog dialog1;
-    private boolean isNetWork;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,6 +211,65 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     }
 
 
+    /**
+     * 设置webview
+     *
+     * @param webView
+     * @param url
+     */
+    public void SeetingWebView(WebView webView, String url) {
+        WebSettings webSettings = webView.getSettings();
+        //加载缓存否则网络
+        /*if (Build.VERSION.SDK_INT >= 19) {
+            webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        }*/
+        webSettings.setJavaScriptEnabled(true);   // 设置支持javascript脚本
+        webView.addJavascriptInterface(new BaseActivity.JSCallAndroid(this), "JSCallAndroid");  //Js调用android  设置
+        webSettings.setBuiltInZoomControls(false);  // 设置出现缩放工具 是否使用WebView内置的缩放组件，由浮动在窗口上的缩放控制和手势缩放控制组成，默认false
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);//自适应屏幕
+        webView.getSettings().setDomStorageEnabled(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
+        }
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                // TODO Auto-generated method stub
+                handler.proceed();// 接受所有网站的证书
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // 在APP内部打开链接，不要调用系统浏览器
+                view.loadUrl(url);
+                return false;
+            }
+        });
+        webView.loadUrl(url);
+    }
+
+
+    //查看大图 与js交互
+    public class JSCallAndroid {
+        Context context;
+
+        JSCallAndroid(Context c) {
+            context = c;
+        }
+
+        @JavascriptInterface
+        public void getBigImage(String url) {
+            Intent intent = new Intent(mContext, ShowBigImageActivity.class);
+            intent.putExtra("url", url);
+            startActivity(intent);
+            //overridePendingTransition(R.anim.bottom_in, R.anim.bottom_silent);
+        }
+    }
+
+
+    /**
+     * 设置极光消息
+     */
     public class MessageReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -225,7 +287,6 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
             }
         }
     }
-
 
 
     /**

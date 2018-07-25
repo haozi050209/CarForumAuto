@@ -33,11 +33,13 @@ public class GlideManager {
                 .into(imageView);
     }
 
-    public static void loadImage(Context context, String url, int image, ImageView imageView) {
+    public static void loadImage(Context context, String url, int errorImageId, final ImageView imageView) {
         Glide.with(context)
                 .load(url)
-                .error(image)
+                .error(errorImageId)
                 .into(imageView);
+
+
     }
 
 
@@ -72,9 +74,6 @@ public class GlideManager {
                 .error(errorImageId)
                 .into(imageView);
     }
-
-
-    
 
 
 }

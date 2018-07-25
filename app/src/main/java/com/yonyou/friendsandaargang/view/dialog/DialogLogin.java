@@ -69,16 +69,6 @@ public class DialogLogin extends DialogUtils {
 
 
 
-    /*public void setContent(String str) {
-        if (RxRegTool.isURL(str)) {
-            // 响应点击事件的话必须设置以下属性
-            mTvContent.setMovementMethod(LinkMovementMethod.getInstance());
-            mTvContent.setText(RxTextTool.getBuilder("").setBold().append(str).setUrl(str).create());//当内容为网址的时候，内容变为可点击
-        } else {
-            mTvContent.setText(str);
-        }
-
-    }*/
 
     private void initView() {
         View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_login, null);

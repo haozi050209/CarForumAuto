@@ -65,7 +65,6 @@ public class SearchAdapter extends SectionedBaseAdapter implements View.OnClickL
         this.contents = contents;
         this.titlelist = titlelist;
         viewArray = new SparseArray<>();
-        //initviews();
     }
 
 

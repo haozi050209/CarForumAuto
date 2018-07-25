@@ -71,7 +71,7 @@ public class BigShotAuthenticationActivity extends BaseActivity implements Image
     private int maxImgCount = 9;               //允许选择图片最大数
     private Long time;
 
-    private DialogUploadPicture dialogUploadPicture;
+    private DialogUploadPicture dialog;
     //OSS的上传下载
     private OssService ossService;
     private String endpoint = "https://oss-cn-hangzhou.aliyuncs.com";
@@ -123,44 +123,7 @@ public class BigShotAuthenticationActivity extends BaseActivity implements Image
     public void onItemClick(View view, int position) {
         switch (position) {
             case IMAGE_ITEM_ADD:
-                dialogUploadPicture = new DialogUploadPicture(this);
-                dialogUploadPicture.getCancel().setText("取消");
-                dialogUploadPicture.getAlbum().setText("选择相册");
-                dialogUploadPicture.getPhotograph().setText("相机");
-                dialogUploadPicture.setCancelable(false);
-                dialogUploadPicture.setPhotographListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //打开选择,本次允许选择的数量
-                        ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
-                        Intent intent = new Intent(BigShotAuthenticationActivity.this, ImageGridActivity.class);
-                        intent.putExtra(ImageGridActivity.EXTRAS_TAKE_PICKERS, true); // 是否是直接打开相机
-                        startActivityForResult(intent, REQUEST_CODE_SELECT);
-                        dialogUploadPicture.dismiss();
-                    }
-                });
-                dialogUploadPicture.setAlbumListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //打开选择,本次允许选择的数量
-                        ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
-                        Intent intent1 = new Intent(BigShotAuthenticationActivity.this, ImageGridActivity.class);
-                                /* 如果需要进入选择的时候显示已经选中的图片，
-                                 * 详情请查看ImagePickerActivity
-                                 * */
-//                                intent1.putExtra(ImageGridActivity.EXTRAS_IMAGES,images);
-                        startActivityForResult(intent1, REQUEST_CODE_SELECT);
-                        dialogUploadPicture.dismiss();
-                    }
-                });
-
-                dialogUploadPicture.setCancelListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialogUploadPicture.dismiss();
-                    }
-                });
-                dialogUploadPicture.show();
+                showDialog();
                 break;
             default:
                 //打开预览
@@ -173,6 +136,48 @@ public class BigShotAuthenticationActivity extends BaseActivity implements Image
         }
     }
 
+
+    private void showDialog() {
+        dialog = new DialogUploadPicture(this);
+        dialog.getWindow().findViewById(android.support.design.R.id.design_bottom_sheet)
+                .setBackgroundResource(android.R.color.transparent);
+        dialog.getCancel().setText("取消");
+        dialog.getAlbum().setText("选择相册");
+        dialog.getPhotograph().setText("相机");
+        dialog.setPhotographListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //打开选择,本次允许选择的数量
+                ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
+                Intent intent = new Intent(mContext, ImageGridActivity.class);
+                intent.putExtra(ImageGridActivity.EXTRAS_TAKE_PICKERS, true); // 是否是直接打开相机
+                startActivityForResult(intent, REQUEST_CODE_SELECT);
+                dialog.dismiss();
+            }
+        });
+        dialog.setAlbumListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //打开选择,本次允许选择的数量
+                ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
+                Intent intent1 = new Intent(mContext, ImageGridActivity.class);
+                                /* 如果需要进入选择的时候显示已经选中的图片，
+                                 * 详情请查看ImagePickerActivity
+                                 * */
+//                                intent1.putExtra(ImageGridActivity.EXTRAS_IMAGES,images);
+                startActivityForResult(intent1, REQUEST_CODE_SELECT);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCancelListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 
     /**
      * 处理选择回来时图片

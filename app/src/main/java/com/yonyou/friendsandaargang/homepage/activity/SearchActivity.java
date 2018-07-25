@@ -75,10 +75,8 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener
     MyListView lately_search_listview;
     @BindView(R.id.search_recyler)
     ListView search_recyler;
-
     @BindView(R.id.search_scrollview)
     ScrollView search_scrollview;
-
     @BindView(R.id.search_clea_lay)
     LinearLayout search_clea_lay;
     @BindView(R.id.suos_xuanzhe)
@@ -94,14 +92,11 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener
     @BindView(R.id.search_jilu_lay)
     LinearLayout jilulayout;
 
-    private String content;
     private List<String> list;
     private String[] hotlist;
     private List arrayList;
     private HostSearchAdapter hostSearchAdapter;
-    private String editcotent;
-    private String userid;
-    private String string;   //搜查类型
+    private String userid,string,editcotent,content;
 
     private HIndicatorDialog hIndicatorDialog;
     private HIndicatorAdapter hIndicatorAdapter;
